@@ -1,43 +1,26 @@
 import React, { useState } from "react";
 
 export default function Form({ onAddTask }) {
-  const [description, setDescription] = useState("");
+  const [taskDescription, setTaskDescription] = useState("");
 
   const handleSubmit = (e) => {
-    // TODO: write code to handle form submission
     e.preventDefault();
-
-    if (!description.trim()) {
-      alert("Task description cannot be empty!");
-      return;
-    }    
-  
-      const newTask = {
-        key: Date.now(),
-        description,
-        completed: false,
-      };
-
-      onAddTask(newTask);
+    if (taskDescription.trim()) {
+      onAddTask({ description: taskDescription });
+      setTaskDescription("");
+    }
   };
 
   return (
-    /*TODO: add a form to add a new task*/
-    <form className="add-form" onSubmit={handleSubmit}>
-      <h3>Add Task</h3>
-      
-      {/* input for task desc */}
-      <input 
-      type="text" 
-      placeholder="New Task..."
-      value={description}
-      onChange={(e) => setDescription(e.target.value)} 
+    <form onSubmit={handleSubmit}>
+      <input
+        type="text"
+        placeholder="Add a new task"
+        value={taskDescription}
+        onChange={(e) => setTaskDescription(e.target.value)}
       />
-      
-      {/* Add button */}
-      <button type="submit">SUBMIT</button>
-    
-    </form>
-  );
+      <button type="submit">Add Task</button>
+    </form>
+  );
 }
 
