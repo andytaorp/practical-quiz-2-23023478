@@ -16,20 +16,7 @@ export default function Task({ task, onToggleTask, onDeleteTask }) {
           />
           {task.description}
         </span>
-        <button
-          onClick={() => onDeleteTask(task.id)}
-          style={{
-            marginLeft: "8px",
-            background: "transparent",
-            border: "none",
-            color: "black",
-            cursor: "pointer",
-            fontSize: "20px",
-          }}
-          aria-label="Delete task"
-        >
-          ☠
-        </button>
+        <button onClick={() => onDeleteTask(task.id)}>Delete</button>
       </li>
     );
   }

@@ -7,10 +7,13 @@ export default function Form({ onAddTask }) {
     // TODO: write code to handle form submission
     e.preventDefault();
 
-    if (!description.trim()) return;
+    if (!description.trim()) {
+      alert("Task description cannot be empty!");
+      return;
+    }    
   
       const newTask = {
-        id: Date.now(),
+        key: Date.now(),
         description,
         completed: false,
       };
@@ -21,12 +24,12 @@ export default function Form({ onAddTask }) {
   return (
     /*TODO: add a form to add a new task*/
     <form className="add-form" onSubmit={handleSubmit}>
-      <h3>Task you need to do</h3>
+      <h3>Add Task</h3>
       
-      {/* input for item desc */}
+      {/* input for task desc */}
       <input 
       type="text" 
-      placeholder="Task..."
+      placeholder="New Task..."
       value={description}
       onChange={(e) => setDescription(e.target.value)} 
       />
