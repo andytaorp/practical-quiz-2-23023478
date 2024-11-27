@@ -10,16 +10,16 @@ function App() {
     setTasks((prevTasks) => [...prevTasks, newTask]);
   };
 
-  const handleToggleTask = (id) => {
+  const onToggleTask = (id) => {
     // TODO: write code to toggle a task's status
-    setItems((prevTasks) =>
+    setTasks((prevTasks) =>
       prevTasks.map((task) =>
         task.id === id ? { ...task, completed: !task.completed } : task
       )
     );
   };
 
-  const handleDeleteTask = (id) => {
+  const onDeleteTask = (id) => {
     // TODO: write code to delete a task
     setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
   };
@@ -32,8 +32,8 @@ function App() {
       {/*TODO: add a list of tasks*/}
       <TaskList 
       tasks={tasks} 
-      handleToggleTask={handleToggleTask} 
-      handleDeleteTask={handleDeleteTask}
+      onToggleTask={onToggleTask} 
+      onDeleteTask={onDeleteTask}
       />
     </div>
   );
